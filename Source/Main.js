@@ -5,6 +5,8 @@
  
 ***/
 
+/*** Globals & Constants ***/
+
 // What are "block" sizes in pixels
 var BlockSizeInPixels = 3;
 
@@ -21,6 +23,33 @@ var CameraPosition = { x:0, y:0 };
 // Input management
 var InputSpeeds = { horizontalMovement: 4 };
 
+/*** Material Classes ***/
+
+var Sand = {
+    m_name: "Sand",
+    m_baseColor: [237, 201, 175],
+    m_updateFunc: function( position, neighbors ) {
+        
+        // Do I have any neighbors below me?
+        var falling = true;
+        for(var i = 0; i < neighbors.count(); i++)
+        {
+            if( neighbors.position.x == position.x && neighbors.position.y == (position.y - 1) )
+            {
+                // We shouldn't fall down
+                falling = false;
+            }
+        }
+        
+        // No need to move
+        if(falling)
+            position.y--;
+        return position;
+    },
+};
+
+/*** Game Update Loot ***/
+
 // Main application entry point
 function main()
 {
@@ -35,6 +64,8 @@ function main()
         DrawFrame( ctx );
     }, 1000.0 / 24.0 );
 }
+
+/*** Input & Graphics ***/
 
 function RegisterKeyboard()
 {
