@@ -2,11 +2,15 @@
 <html>
     <head>
         <title>SandCastle Game</title>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="Source/pathfinding-browser.js"></script>
         <script src="Source/Main.js"></script>
     </head>
-    <body onload="main()">
+    <body>
         <div style="width: 640px; margin-left: auto; margin-right: auto;">
             <h2 style="text-align: center;">SandCastle Game</h2>
+            <div style="text-align: center; font-size: 80%;">1: Sand, 2: Bedrock, 3: Dirt, 4: Gold, 5: Water, 0: Clear</div>
+            <br/>
             <canvas id="MainCanvas" width="640" height="480" style="border:1px solid #000000;"></canvas>
         </div>
     </body>
